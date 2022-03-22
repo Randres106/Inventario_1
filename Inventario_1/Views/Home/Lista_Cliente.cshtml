@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Inventario_1.Models.Producto>
+@using Inventario_1
+@{
+    ViewData["Title"] = "Lista_Cliente";
+}
+
+<h1>Lista_Cliente</h1>
+
+<form asp-action="Lista_Cliente" method="get">
+    <div class="from-action no-gutters">
+        <p>
+            Buscar por: <select name="BTipo" value="@ViewData["CurrentFilterType"]">
+                <option> </option>
+                <option>Código</option>
+                <option>Nombre</option>
+                <option>Cantidad</option>
+            </select>
+            <input type="text" name="Bbuscar" value="@ViewData["CurrentFilterSearch"]" />
+            <input type="submit" value="Buscar" class="btn btn-primary" /></br>
+            <a asp-action="Lista_Cliente">Lista todos los productos</a></br>
+            <a asp-action="Ingresar">Nuevo Producto</a>
+
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cant_Productos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cant_Productos)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { Codigo = item.Codigo }) |
+                @Html.ActionLink("Delete", "Delete", new { Codigo = item.Codigo}) 
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

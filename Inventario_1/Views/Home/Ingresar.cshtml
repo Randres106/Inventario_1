@@ -1,0 +1,52 @@
+﻿@model Inventario_1.Models.Producto
+
+@{
+    ViewData["Title"] = "Ingresar";
+}
+
+<h1>Ingresar</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Ingresar" req>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Codigo" class="control-label"></label>
+                <input asp-for="Codigo" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
+                <font color="red">
+                    <h5>@ViewData["Existe"]</h5>
+                </font>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cant_Productos" class="control-label"></label>
+                <input asp-for="Cant_Productos" class="form-control" />
+                <span asp-validation-for="Cant_Productos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                <a href="https://localhost:44337/Home/Lista_Cliente" class="btn btn-primary">Lista de Productos</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Inicio</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

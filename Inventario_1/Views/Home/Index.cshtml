@@ -1,0 +1,30 @@
+﻿@model Inventario_1.Models.Producto
+@using Inventario_1
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Desarollo de Prueba Inventario</h1>
+    <h4>Sistema de Inventario de productos.</h4>
+</div>
+<div class="text-center">
+    <p>El objetivó de esta aplicación es el manejo de un sistema de inventario de productos en el cual se pueden Ingresar, Modificar, Consultar y Eliminar los productos que el cliente desee.</p>
+    <a href="https://localhost:44337/Home/Ingresar" class="btn btn-primary">Ingresar Producto</a>
+    <a href="https://localhost:44337/Home/Lista_Cliente" class="btn btn-primary">Lista de Productos</a></br></br>
+    <p>Una función extra es que la aplicación admite archivos CSV con el formato Código, Nombre, Descripción y Cantidad de producto para facilitar el ingreso masivo de productos.</p>
+    <form enctype="multipart/form-data" asp-controller="Home" asp-action="UploadFilecsv" method="post" class="mt-3">
+        <div class="text-center">
+            <label asp-for="FileC" class="col-sm-1 col-form-label"></label>
+            <div class="text-center">
+                <div class="custom-file">
+                    <input asp-for="FileC" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File.......</label>
+                    <input type="submit" value="Aceptar" class="btn btn-primary" asp-action="UploadFilecsv" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
